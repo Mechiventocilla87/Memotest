@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div id='choice_niveles' class="box_start">
+        <div class="content_box">
+            <span class="title">Memotest</span>
+            <p class="texto">Hola👋! Vamos a jugar al Memotest<br>Pero antes de empezar...<br>Cuál es tu nombre <span>?</span></p>
+            <input id="ingresar_nombre" class="caja_texto" type="text">
+            <p class="texto">Con qué dificultad te gustaría jugar?</p>
+            <button id='nivel_facil' class="boton">FÁCIL</button>
+            <button id='nivel_intermedio'class="boton">INTERMEDIO</button>
+            <button id='nivel_experto' class="boton">EXPERTO</button>
+            <div id='box_error' class="error hidden"><span class='weight'>UPSS...</span><span>El nombre es requerido</span></div>
+        </div>
+    </div>
+    <div class="modal hidden"></div>
+    <div id='final_result' class='box_result hidden'>
+        <div class='content_result'>
+            <div class="content_text">
+                <p class="text_result"></p>
+                <p class="text_2">Ya podés volver a jugar</p>
+                <button id='reload' class="volver_jugar">VOLVER A JUGAR</button>
+            </div>
+            <div class="big_box">
+                <div class="little_box">
+                    <p class='title_box'>NOMBRE</p>
+                </div>
+                <div class="medium_box">
+                    <p class='title_box'>NIVEL</p>
+                </div>
+                <div class="large_box">
+                    <p class='title_box'>INTENTOS</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="opacity"></div>
+    <main id='main_content' class="board hidden">
+        <div class="content_board">
+            <div class="encabezado">
+                <span class="title">Memotest</span>
+                <p id='textoBienvenida'class="texto_encabezado"></p>
+                <span class="encabezadoChico">Encontra todos los pares en menos de <span id='intentos'></span>intentos</span>
+                <p class="encabezadoChico">Nivel</p>
+                <p id='text_nivel' class="texto_encabezado"></p>
+            </div>
+            <div class="cuerpo">
+                    <div class="tapada"><img  class='img_tapada' src="imagenes/tapada.jpg" alt="" data-img='' data-id=""></div>
+                    <div class="tapada"><img  class='img_tapada' src="imagenes/tapada.jpg" alt="" data-img='' data-id=""></div>
+                    <div class="tapada"><img  class='img_tapada' src="imagenes/tapada.jpg" alt="" data-img='' data-id=""></div>
+                    <div class="tapada"><img  class='img_tapada' src="imagenes/tapada.jpg" alt="" data-img='' data-id=""></div>
+                    <div class="tapada"><img  class='img_tapada' src="imagenes/tapada.jpg" alt="" data-img='' data-id=""></div>
+                    <div class="tapada"><img  class='img_tapada' src="imagenes/tapada.jpg" alt="" data-img='' data-id=""></div>
+                    <div class="tapada"><img  class='img_tapada' src="imagenes/tapada.jpg" alt="" data-img='' data-id=""></div>
+                    <div class="tapada"><img  class='img_tapada' src="imagenes/tapada.jpg" alt="" data-img='' data-id=""></div>
+                    <div class="tapada"><img  class='img_tapada' src="imagenes/tapada.jpg" alt="" data-img='' data-id=""></div>
+                    <div class="tapada"><img  class='img_tapada' src="imagenes/tapada.jpg" alt="" data-img='' data-id=""></div>
+                    <div class="tapada"><img  class='img_tapada' src="imagenes/tapada.jpg" alt="" data-img='' data-id=""></div>
+                    <div class="tapada"><img  class='img_tapada' src="imagenes/tapada.jpg" alt="" data-img='' data-id=""></div>
+            </div>
+            <div class="pie">
+                <p class="texto_pie">Intentos: <span class="counter"></span></p>
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src='js/index.js'></script>
+</body>
+</html>
