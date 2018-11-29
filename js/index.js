@@ -4,15 +4,14 @@ var imagenes = ['imagenes/alce.jpg', 'imagenes/epelante.jpg', 'imagenes/nena.jpg
 var valorInput;
 var nivel;
 var cantMov = 0;
-var contador2Clicks = 0;
 var pieza1;
 var pieza2;
+var clicks = 0;
 var aciertos = 0
 var intentos = 0;
 var ganaste = false;
 var perdiste = false;
 var rankings= JSON.parse(localStorage.getItem('Winners'));
-
 
 
 //funcion randoom
@@ -119,25 +118,25 @@ for (var i = 0; i < imagenesLength; i++){
 
 function gameBegin() {
 
-    var clicks = 0;
 
     $('.img_tapada').on('click', function() {
     
         clicks = clicks + 1;
-    
-        $(this).addClass('flip');
-    
-        var visible = $(this).attr('data-img')
-        $(this).attr('src', visible);
-        
-        var cargaId = $(this).attr('data-id')
-        $(this).attr('id', cargaId);
 
-    
+        
         $('.counter').html(intentos);
     
      
-        if(clicks == 1){  
+        if(clicks == 1){
+
+            $(this).addClass('flip');
+
+            var visible = $(this).attr('data-img')
+            $(this).attr('src', visible);
+            
+            var cargaId = $(this).attr('data-id')
+            $(this).attr('id', cargaId);
+    
 
             //Trasnformo la varibale 'pieza1' declarada afuera en objeto, 
             //seteando los datos de la pieza que hago click en ese momento.
@@ -148,13 +147,20 @@ function gameBegin() {
                 img : $(this).attr('data-img'),
     
             }
-
+            
             intentos = intentos + 1;
-
-            // contador2Clicks++;
 
 
         } else if (clicks == 2) {
+
+            $(this).addClass('flip');
+
+            var visible = $(this).attr('data-img')
+            $(this).attr('src', visible);
+            
+            var cargaId = $(this).attr('data-id')
+            $(this).attr('id', cargaId);
+    
 
             //Trasnformo la variable 'pieza2' declarada afuera en objeto, 
             //seteando los datos de la pieza que hago click en ese momento.
@@ -166,20 +172,13 @@ function gameBegin() {
                 
             }
             
-            // contador2Clicks++
-
-            // console.log(contador2Clicks);
-            
-            
             //Comparo la pieza del 1er click con la pieza del 2do click,
             //con condiciones que determinan una coincidencia con esta función:
 
             validation()
 
-            clicks = 0; //reseteo variable clicks a 0 .
 
             
-
             if (aciertos == 6 && intentos<=cantMov ) {
                 ganaste = true;
                 console.log('ganaste');
@@ -193,10 +192,9 @@ function gameBegin() {
                 
             }
 
-            
+
             result(ganaste, perdiste);
-            
-            
+                        
                
         }
     
@@ -210,6 +208,7 @@ function gameBegin() {
 
 
 function validation(){
+
     //Comparo la pieza del 1er click con la pieza del 2do click,
     //con condiciones que determinan una coincidencia.
     if(pieza1.id!=pieza2.id && pieza1.img==pieza2.img ){
@@ -226,25 +225,30 @@ function validation(){
 
         $("#" + pieza2.id).addClass("grayscale");
         $("#" + pieza1.id).addClass("grayscale");
-        
+
+        clicks = 0; //reseteo variable clicks a 0 .
+
         },500); 
         
-
-
 
     } else { //sino hay coincidencia: 
 
 
         setTimeout(function () {
 
+
         $("#"+ pieza1.id).attr("src","imagenes/tapada.jpg");
         $("#"+ pieza2.id).attr("src","imagenes/tapada.jpg"); 
         $("#"+ pieza1.id).removeClass('flip');
         $("#"+ pieza2.id).removeClass('flip');
-            
+
+        clicks = 0; //reseteo variable clicks a 0 .
+
         },2000);
 
+
     }
+
 
 };
 
@@ -253,29 +257,29 @@ function validation(){
 function result(a, b) {
     
     if (a == true) {
+
         $('#final_result').removeClass('hidden');
         $('.modal').removeClass('hidden');
         $('.text_result').html('GANASTE🎉! con ' + intentos + ' intentos.');
 
         var jugador = {
+
             nombre: valorInput,
             nivel : nivel,
             intentos : intentos
+
         }
     
 
         if (rankings == null) {
-            rankings = [];        
+
+            rankings = [];  
+
         }
 
         
         rankings.push(jugador);
 
-
-        // rankings.push(JSON.parse(localStorage.getItem('Winners')));
-        // a.push();
-
-        
         console.log(rankings);
         
     
@@ -288,8 +292,7 @@ function result(a, b) {
             $('.large_box').append(`<p>${rankings[i].intentos}</p>`)
     
         }
-        
-        
+                
 
     } else if (b == true) {
         $('#final_result').removeClass('hidden');

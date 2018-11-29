@@ -312,9 +312,10 @@ body{
     }
 }
 
-@media(max-width : 800px){
+@media(max-width:800px){
 
     body{
+        background-size: 400%;
         .box_start{
             width: 270px;
             margin-left: -150px;
@@ -334,10 +335,40 @@ body{
                     height:45px;
                     font-size: 18px;
                 }
+                
             }
     
         }
         
+
+    }
+
+    .box_start{
+        .error{
+            height: 50px;
+            line-height: 20px;
+            padding-top: 15px;
+            font-size: 17px;
+        }
+
+    }
+
+    .box_result{
+        border: 11px solid black;
+        margin-left: -145px;
+        .content_result{
+            .content_text{
+                .text_result{
+                    font-size: 16px;
+                }
+                .text_2{
+                    font-size: 14px;
+                }
+                .volver_jugar{
+                    font-size: 16px;
+                }
+            }
+        }
 
     }
 

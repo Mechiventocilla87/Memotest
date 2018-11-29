@@ -257,6 +257,9 @@ body .box_start .content_box .texto span {
 }
 
 @media (max-width: 800px) {
+  body {
+    background-size: 400%;
+  }
   body .box_start {
     width: 270px;
     margin-left: -150px;
@@ -277,6 +280,27 @@ body .box_start .content_box .texto span {
   body .box_start .content_box .boton {
     height: 45px;
     font-size: 18px;
+  }
+
+  .box_start .error {
+    height: 50px;
+    line-height: 20px;
+    padding-top: 15px;
+    font-size: 17px;
+  }
+
+  .box_result {
+    border: 11px solid black;
+    margin-left: -145px;
+  }
+  .box_result .content_result .content_text .text_result {
+    font-size: 16px;
+  }
+  .box_result .content_result .content_text .text_2 {
+    font-size: 14px;
+  }
+  .box_result .content_result .content_text .volver_jugar {
+    font-size: 16px;
   }
 
   .board {
