@@ -141,6 +141,9 @@ body .box_start .content_box .texto span {
   height: 110px;
   border: 1.4px solid #FF9C25;
 }
+.cuerpo .tapada .img_tapada:hover {
+  box-shadow: -4px 5px 5px -1px gray;
+}
 
 .grayscale {
   filter: grayscale(100%);
@@ -251,6 +254,67 @@ body .box_start .content_box .texto span {
 }
 .big_box .large_box .title_box {
   text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+  body .box_start {
+    width: 270px;
+    margin-left: -150px;
+    border-radius: 25px;
+  }
+  body .box_start .content_box {
+    font-size: 20px;
+    width: 62%;
+    margin: 18%;
+  }
+  body .box_start .content_box .title {
+    font-size: 40px;
+  }
+  body .box_start .content_box .caja_texto {
+    height: 25px;
+    font-size: 14px;
+  }
+  body .box_start .content_box .boton {
+    height: 45px;
+    font-size: 18px;
+  }
+
+  .board {
+    border: 15px solid black;
+    border-radius: 25px;
+  }
+  .board .content_board {
+    width: 88%;
+  }
+  .board .content_board .encabezado {
+    font-size: 16px;
+    height: 180px;
+  }
+  .board .content_board .encabezado .title {
+    font-size: 40px;
+  }
+  .board .content_board .encabezado .encabezadoChico {
+    font-size: 15px;
+  }
+
+  .board .cuerpo .tapada {
+    width: 69px;
+    height: 69px;
+    margin-bottom: 18px;
+  }
+  .board .cuerpo .tapada .img_tapada {
+    width: 69px;
+    height: 69px;
+    border: 2px solid #FF9C25;
+  }
+
+  .board .pie {
+    height: 40px;
+  }
+  .board .pie .texto_pie {
+    line-height: 40px;
+    font-size: 16px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

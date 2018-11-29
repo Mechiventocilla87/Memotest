@@ -4,17 +4,16 @@ var imagenes = ['imagenes/alce.jpg', 'imagenes/epelante.jpg', 'imagenes/nena.jpg
 var valorInput;
 var nivel;
 var cantMov = 0;
+var contador2Clicks = 0;
 var pieza1;
 var pieza2;
 var aciertos = 0
 var intentos = 0;
 var ganaste = false;
 var perdiste = false;
+var rankings= JSON.parse(localStorage.getItem('Winners'));
 
-// var rankings = localStorage.getItem('Winners');
 
-
-//me falta el localstorage, la variable para que no se haga mas de 2 clicks.
 
 //funcion randoom
 //--------------------------------------------------
@@ -76,8 +75,8 @@ $('#nivel_experto').on('click', function (){
 //-------------------------------------------------
 
 
-//funcion welcome, representa los datos del tablero de las cartas, nombre, cantidad de intentos etc.
-//-----------------------------------------------------------
+//funcion welcome, representa los datos del tablero de las piezas, nombre, cantidad de intentos etc.
+//--------------------------------------------------------------
 function welcome() {
 
     valorInput = $('#ingresar_nombre').val();
@@ -102,7 +101,7 @@ function welcome() {
     
 }
 
-//-----------------------------------------------------------
+//--------------------------------------------------------------
  
 
 //carga de imagenes del array en data-img 
@@ -138,7 +137,8 @@ function gameBegin() {
         $('.counter').html(intentos);
     
      
-        if(clicks == 1){    
+        if(clicks == 1){  
+
             //Trasnformo la varibale 'pieza1' declarada afuera en objeto, 
             //seteando los datos de la pieza que hago click en ese momento.
 
@@ -151,7 +151,11 @@ function gameBegin() {
 
             intentos = intentos + 1;
 
+            // contador2Clicks++;
+
+
         } else if (clicks == 2) {
+
             //Trasnformo la variable 'pieza2' declarada afuera en objeto, 
             //seteando los datos de la pieza que hago click en ese momento.
             
@@ -162,14 +166,19 @@ function gameBegin() {
                 
             }
             
-           
+            // contador2Clicks++
+
+            // console.log(contador2Clicks);
+            
+            
             //Comparo la pieza del 1er click con la pieza del 2do click,
             //con condiciones que determinan una coincidencia con esta función:
+
             validation()
 
             clicks = 0; //reseteo variable clicks a 0 .
 
-
+            
 
             if (aciertos == 6 && intentos<=cantMov ) {
                 ganaste = true;
@@ -184,6 +193,7 @@ function gameBegin() {
                 
             }
 
+            
             result(ganaste, perdiste);
             
             
@@ -206,7 +216,7 @@ function validation(){
         
 
         aciertos = aciertos + 1; //si hay coincidencia variable aciertos suma 1.
-            
+        
 
         $("#"+ pieza1.id).addClass('pointer');
         $("#"+ pieza2.id).addClass('pointer');
@@ -217,7 +227,8 @@ function validation(){
         $("#" + pieza2.id).addClass("grayscale");
         $("#" + pieza1.id).addClass("grayscale");
         
-        },500);
+        },500); 
+        
 
 
 
@@ -252,8 +263,6 @@ function result(a, b) {
             intentos : intentos
         }
     
-        var rankings;
-        rankings = JSON.parse(localStorage.getItem('Winners'));
 
         if (rankings == null) {
             rankings = [];        
