@@ -237,6 +237,7 @@ body .box_start .content_box .texto span {
 .big_box .little_box {
   width: 33.3%;
   border: 1px solid black;
+  padding: 2px;
 }
 .big_box .little_box .title_box {
   text-decoration: underline;
@@ -244,6 +245,7 @@ body .box_start .content_box .texto span {
 .big_box .medium_box {
   width: 33.3%;
   border: 1px solid black;
+  padding: 2px;
 }
 .big_box .medium_box .title_box {
   text-decoration: underline;
@@ -251,6 +253,7 @@ body .box_start .content_box .texto span {
 .big_box .large_box {
   width: 33.3%;
   border: 1px solid black;
+  padding: 2px;
 }
 .big_box .large_box .title_box {
   text-decoration: underline;

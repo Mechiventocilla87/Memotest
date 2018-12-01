@@ -8,11 +8,13 @@ var pieza1;
 var pieza2;
 var clicks = 0;
 var aciertos = 0
-var intentos = 0;
+var intentos = 1;  
 var ganaste = false;
 var perdiste = false;
 var rankings= JSON.parse(localStorage.getItem('Winners'));
 
+// inicializo intentos en 1 porque sino empieza a contar desde 0 en el par de piezas,
+// más abajo le resto 1.
 
 //funcion randoom
 //--------------------------------------------------
@@ -123,9 +125,8 @@ function gameBegin() {
     
         clicks = clicks + 1;
 
-        
         $('.counter').html(intentos);
-    
+
      
         if(clicks == 1){
 
@@ -148,8 +149,7 @@ function gameBegin() {
     
             }
             
-            intentos = intentos + 1;
-
+            
 
         } else if (clicks == 2) {
 
@@ -171,21 +171,22 @@ function gameBegin() {
                 img : $(this).attr('data-img'),
                 
             }
-            
+
             //Comparo la pieza del 1er click con la pieza del 2do click,
             //con condiciones que determinan una coincidencia con esta función:
+
 
             validation()
 
 
             
-            if (aciertos == 6 && intentos<=cantMov ) {
+            if (aciertos == 6 && intentos - 1 <=cantMov) {
                 ganaste = true;
                 console.log('ganaste');
                 console.log(ganaste);
                 
                             
-            }else if( aciertos < 6 && intentos == cantMov){
+            }else if( aciertos < 6 && intentos - 1 == cantMov){
                 perdiste = true;
                 console.log('perdiste');
                 console.log(perdiste);
@@ -215,7 +216,9 @@ function validation(){
         
 
         aciertos = aciertos + 1; //si hay coincidencia variable aciertos suma 1.
-        
+
+        intentos = intentos + 1;//suma 1 en intentos, si en caso la se compara piezas con DISTINTO ID e IGUAL IMAGEN. 
+
 
         $("#"+ pieza1.id).addClass('pointer');
         $("#"+ pieza2.id).addClass('pointer');
@@ -231,8 +234,9 @@ function validation(){
         },500); 
         
 
-    } else { //sino hay coincidencia: 
+    } else if(pieza1.id!=pieza2.id && pieza1.img!=pieza2.img){ //sino hay coincidencia:
 
+        intentos = intentos + 1; //suma 1 en intentos, si en caso la se compara piezas con DISTINTO ID y DISTINTA IMAGEN.
 
         setTimeout(function () {
 
@@ -247,6 +251,22 @@ function validation(){
         },2000);
 
 
+    } else if(pieza1.id==pieza2.id && pieza1.img==pieza2.img){
+
+        //hipotético caso si se hace click en la misma pieza.
+
+        setTimeout(function () {
+
+
+            $("#"+ pieza1.id).attr("src","imagenes/tapada.jpg");
+            $("#"+ pieza2.id).attr("src","imagenes/tapada.jpg"); 
+            $("#"+ pieza1.id).removeClass('flip');
+            $("#"+ pieza2.id).removeClass('flip');
+    
+            clicks = 0; //reseteo variable clicks a 0 .
+    
+        },2000);
+
     }
 
 
@@ -260,13 +280,13 @@ function result(a, b) {
 
         $('#final_result').removeClass('hidden');
         $('.modal').removeClass('hidden');
-        $('.text_result').html('GANASTE🎉! con ' + intentos + ' intentos.');
+        $('.text_result').html('GANASTE🎉! con ' + (intentos - 1)  + ' intentos.');
 
         var jugador = {
 
             nombre: valorInput,
             nivel : nivel,
-            intentos : intentos
+            intentos : intentos - 1
 
         }
     
@@ -297,7 +317,7 @@ function result(a, b) {
     } else if (b == true) {
         $('#final_result').removeClass('hidden');
         $('.modal').removeClass('hidden');
-        $('.text_result').html('PERDISTE😪! con ' + intentos + ' intentos.');
+        $('.text_result').html('PERDISTE😪! con ' + (intentos - 1) + ' intentos.');
 
     }
    
