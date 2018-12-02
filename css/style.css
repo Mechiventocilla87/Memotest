@@ -342,6 +342,9 @@ body .box_start .content_box .texto span {
     line-height: 40px;
     font-size: 16px;
   }
+  .board .pie .texto_pie .counter {
+    font-size: 16px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
