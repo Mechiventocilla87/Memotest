@@ -7,8 +7,8 @@ var cantMov = 0;
 var pieza1;
 var pieza2;
 var clicks = 0;
-var intentos = 0;  
-var aciertos = 1;
+var intentos = 1;  
+var aciertos = 0;
 var ganaste = false;
 var perdiste = false;
 var rankings= JSON.parse(localStorage.getItem('Winners'));
@@ -323,7 +323,7 @@ function saveLocalStorage() {
 
         nombre: valorInput,
         nivel : nivel,
-        intentos : intentos
+        intentos : intentos - 1
 
     }
 
