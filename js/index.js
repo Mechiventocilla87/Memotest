@@ -150,7 +150,7 @@ function gameBegin() {
     
             }
             
-            
+            $(this).addClass('pointer');
 
         } else if (clicks == 2) {
 
@@ -173,7 +173,13 @@ function gameBegin() {
                 
             }
 
-            
+            $(this).addClass('pointer');
+
+            intentos = intentos + 1;
+            //suma 1 en intentos, si en caso se compara piezas con DISTINTO ID e IGUAL IMAGEN.
+            //suma 1 en intentos, si en caso se compara piezas con DISTINTO ID y DISTINTA IMAGEN.
+
+
             //Comparo la pieza del 1er click con la pieza del 2do click,
             //con condiciones que determinan una coincidencia con esta función:
             validation()
@@ -208,12 +214,6 @@ function validation(){
 
         aciertos = aciertos + 1; //si hay coincidencia variable aciertos suma 1.
 
-        intentos = intentos + 1;//suma 1 en intentos, si en caso se compara piezas con DISTINTO ID e IGUAL IMAGEN. 
-
-
-        $("#"+ pieza1.id).addClass('pointer');
-        $("#"+ pieza2.id).addClass('pointer');
-
                         
         setTimeout(function () {
 
@@ -227,8 +227,6 @@ function validation(){
 
     } else if (pieza1.id!=pieza2.id && pieza1.img!=pieza2.img){ //sino hay coincidencia:
 
-        intentos = intentos + 1; //suma 1 en intentos, si en caso se compara piezas con DISTINTO ID y DISTINTA IMAGEN.
-
         setTimeout(function () {
 
 
@@ -236,29 +234,16 @@ function validation(){
         $("#"+ pieza2.id).attr("src","imagenes/tapada.jpg"); 
         $("#"+ pieza1.id).removeClass('flip');
         $("#"+ pieza2.id).removeClass('flip');
+        $("#"+ pieza1.id).removeClass('pointer');
+        $("#"+ pieza2.id).removeClass('pointer');
 
         clicks = 0; //reseteo variable clicks a 0 .
 
         },2000);
 
 
-    } else if(pieza1.id==pieza2.id && pieza1.img==pieza2.img){
-
-        //hipotético caso si se hace click en la misma pieza.
-
-        setTimeout(function () {
-
-
-            $("#"+ pieza1.id).attr("src","imagenes/tapada.jpg");
-            $("#"+ pieza2.id).attr("src","imagenes/tapada.jpg"); 
-            $("#"+ pieza1.id).removeClass('flip');
-            $("#"+ pieza2.id).removeClass('flip');
-    
-            clicks = 0; //reseteo variable clicks a 0 .
-    
-        },2000);
-
     }
+
 
 
 };
@@ -298,14 +283,14 @@ function result(a, b) {
 
         $('#final_result').removeClass('hidden');
         $('.modal').removeClass('hidden');
-        $('.text_result').html('GANASTE🎉! con ' + (intentos - 1) + ' intentos.');
+        $('.text_result').html('GANASTE🎉! con ' + (intentos - 1)  + ' intentos.');
         
         saveLocalStorage(); // Llamo a la función que guarda LocalStorage.
 
     } else if (b == true) {
         $('#final_result').removeClass('hidden');
         $('.modal').removeClass('hidden');
-        $('.text_result').html('PERDISTE😪! con ' + (intentos - 1 ) + ' intentos.');
+        $('.text_result').html('PERDISTE😪! con ' + (intentos - 1) + ' intentos.');
 
     }
    
@@ -324,6 +309,7 @@ function saveLocalStorage() {
         nombre: valorInput,
         nivel : nivel,
         intentos : intentos - 1
+
 
     }
 
