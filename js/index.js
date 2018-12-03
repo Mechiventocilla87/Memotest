@@ -13,8 +13,7 @@ var ganaste = false;
 var perdiste = false;
 var rankings= JSON.parse(localStorage.getItem('Winners'));
 
-// inicializo intentos en 1 porque sino empieza a contar desde 0 en el par de piezas,
-// más abajo le resto 1.
+
 
 //funcion randoom
 //--------------------------------------------------
