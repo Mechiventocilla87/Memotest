@@ -7,7 +7,7 @@ var cantMov = 0;
 var pieza1;
 var pieza2;
 var clicks = 0;
-var intentos = 1;  
+var intentos = 0;  
 var aciertos = 0;
 var ganaste = false;
 var perdiste = false;
@@ -125,9 +125,6 @@ function gameBegin() {
     $('.img_tapada').on('click', function() {
     
         clicks = clicks + 1;
-
-        $('.counter').html(intentos);
-
      
         if(clicks == 1){
 
@@ -178,6 +175,8 @@ function gameBegin() {
             intentos = intentos + 1;
             //suma 1 en intentos, si en caso se compara piezas con DISTINTO ID e IGUAL IMAGEN.
             //suma 1 en intentos, si en caso se compara piezas con DISTINTO ID y DISTINTA IMAGEN.
+
+            $('.counter').html(intentos);
 
 
             //Comparo la pieza del 1er click con la pieza del 2do click,
@@ -256,13 +255,13 @@ function validation(){
 
 function validacionAciertos(a) { 
 
-    if (a == 6 && intentos - 1 <= cantMov) {
+    if (a == 6 && intentos <= cantMov) {
         ganaste = true;
         console.log('ganaste');
         console.log(ganaste);
         
                     
-    }else if ( a < 6 && intentos - 1 == cantMov){
+    }else if ( a < 6 && intentos == cantMov){
         perdiste = true;
         console.log('perdiste');
         console.log(perdiste);
@@ -283,14 +282,14 @@ function result(a, b) {
 
         $('#final_result').removeClass('hidden');
         $('.modal').removeClass('hidden');
-        $('.text_result').html('GANASTE🎉! con ' + (intentos - 1)  + ' intentos.');
+        $('.text_result').html('GANASTE🎉! con ' + intentos  + ' intentos.');
         
         saveLocalStorage(); // Llamo a la función que guarda LocalStorage.
 
     } else if (b == true) {
         $('#final_result').removeClass('hidden');
         $('.modal').removeClass('hidden');
-        $('.text_result').html('PERDISTE😪! con ' + (intentos - 1) + ' intentos.');
+        $('.text_result').html('PERDISTE😪! con ' +  intentos  + ' intentos.');
 
     }
    
@@ -308,7 +307,7 @@ function saveLocalStorage() {
 
         nombre: valorInput,
         nivel : nivel,
-        intentos : intentos - 1
+        intentos : intentos 
 
 
     }
