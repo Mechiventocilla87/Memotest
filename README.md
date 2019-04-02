@@ -1,2 +1,2 @@
-# tp_02
-memotest
+# Memotest 
+_Developed with html5, sass & javascript.
